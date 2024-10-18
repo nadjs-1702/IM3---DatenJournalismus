@@ -67,6 +67,7 @@ header {
 
 
 .bild{
+  padding-left: -30px;
   height: 20vw;
   width: auto;
 }/* Styling für den linken Titel */
@@ -130,25 +131,19 @@ header {
 }
 
 /* Canvas Styling */
-#myChart {
-  width: 100vw; /* 66% der Viewport-Breite (zwei Drittel) */
-  height: auto; /* Höhe proportional zur Breite */
-  display: block; /* Canvas als Block-Element */
-  margin: 0 auto; /* Automatische Zentrierung */
-}
 /* Allgemeine Pfeil-Einstellungen */
 .arrow {
-  width: 30px;
-  height: 30px;
+  width: 60px;  /* Verdoppelte Breite */
+  height: 60px; /* Verdoppelte Höhe */
   cursor: pointer;
   transition: 0.5s;
   overflow: hidden;
-  display: inline-block; /* Damit die Pfeile neben dem Text erscheinen */
-  vertical-align: middle; /* Zur mittigen Ausrichtung mit dem Text */
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .arrow:hover {
-  border: solid 2px rgba(110, 150, 175, 1);
+  border: solid 4px rgba(110, 150, 175, 1); /* Angepasste Randgröße */
   border-radius: 50%;
 }
 
@@ -156,23 +151,23 @@ header {
   position: absolute;
   display: block;
   content: "";
-  width: 20px;
-  height: 15px;
-  top: -1px;
-  border-bottom: solid 2px rgba(110, 150, 175, 1);
-  transform: translateX(4px);
+  width: 40px;   /* Verdoppelte Breite */
+  height: 30px;  /* Verdoppelte Höhe */
+  top: -2px;     /* Verdoppelt für symmetrische Anpassung */
+  border-bottom: solid 4px rgba(110, 150, 175, 1);  /* Angepasste Randgröße */
+  transform: translateX(8px);  /* Verdoppelte Verschiebung */
 }
 
 .arrow:before {
   position: absolute;
   display: block;
   content: "";
-  width: 8px;
-  height: 8px;
-  border-top: solid 2px rgba(110, 150, 175, 1);
-  border-left: solid 2px rgba(110, 150, 175, 1);
+  width: 16px;   /* Verdoppelte Breite */
+  height: 16px;  /* Verdoppelte Höhe */
+  border-top: solid 4px rgba(110, 150, 175, 1);  /* Angepasste Randgröße */
+  border-left: solid 4px rgba(110, 150, 175, 1); /* Angepasste Randgröße */
   top: 50%;
-  left: 2px;
+  left: 4px;    /* Verdoppelte Verschiebung */
   transform-origin: 0% 0%;
   transform: rotateZ(-45deg);
 }
@@ -187,19 +182,19 @@ header {
 
 @keyframes aniArrow01 {
   0% {
-    transform: rotateZ(-45deg) translateY(30px) translateX(30px);
+    transform: rotateZ(-45deg) translateY(60px) translateX(60px);  /* Verdoppelte Verschiebungen */
   }
   100% {
-    transform: rotateZ(-45deg) translateY(-35px) translateX(-35px);
+    transform: rotateZ(-45deg) translateY(-70px) translateX(-70px);  /* Verdoppelte Verschiebungen */
   }
 }
 
 @keyframes aniArrow02 {
   0% {
-    transform: translateX(45px);
+    transform: translateX(90px);  /* Verdoppelte Verschiebung */
   }
   100% {
-    transform: translateX(-44px);
+    transform: translateX(-88px); /* Verdoppelte Verschiebung */
   }
 }
 
@@ -208,7 +203,7 @@ header {
   display: flex;
   align-items: center; /* Vertikale Ausrichtung */
   justify-content: center; /* Horizontale Ausrichtung */
-  gap: 10px; /* Abstand zwischen Pfeil und Text */
+  gap: 20px; /* Abstand zwischen Pfeil und Text verdoppelt */
 }
 
 /* Entferne die absolute Positionierung der Pfeile */
