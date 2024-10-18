@@ -1,0 +1,217 @@
+
+.krona-one-regular {
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.rubik-glitch-pop-regular {
+  font-family: "Rubik Glitch Pop", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.rubik-glitch-regular {
+  font-family: "Rubik Glitch", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+    background-color: rgba(233, 220, 211, 1);
+    font-family: "Krona One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 30px;
+    margin-left: 16%;
+    margin-right: 16%;
+    background-image: url('img/background_branches.svg'); /* SVG als Hintergrund */
+    background-size: cover; /* Skaliert das Bild, sodass es den gesamten Bildschirm abdeckt */
+    background-repeat: no-repeat; /* Bild wird nicht wiederholt */
+    background-position: center center; /* Zentriert das Bild */
+}
+
+h1  {
+  font-family: "Rubik Glitch", serif;
+  color: rgba(31, 75, 118, 1);
+  font-size: 10vw;
+}
+h2{
+  color: rgba(31, 75, 118, 1);
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1vw;
+}
+h3{
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vw;
+  color: rgba(110, 150, 175, 1);
+}
+/* Grundlegende Stileinstellungen */
+
+header {
+  display: flex; /* Flexbox aktivieren */
+  justify-content: center; /* Zentriert das Bild horizontal */
+  align-items: center; /* Vertikale Ausrichtung */
+  padding: 20px; /* Innenabstand für mehr Platz */
+  padding-bottom: 10vw;
+  padding-top: 10vw;
+  height: auto; /* Höhe des Headers passt sich dem Bild an */
+}
+
+.header-image {
+  max-width: 100%; /* Bild nicht breiter als der Header */
+  height: auto; /* Höhe proportional zur Breite */
+}
+
+
+.bild{
+  height: 20vw;
+  width: auto;
+}/* Styling für den linken Titel */
+.top-left {
+
+  margin: 0;
+}
+
+/* Styling für den rechten Titel */
+.top-right {
+ 
+  margin: 0;
+}
+
+
+/* Styling für den Inhalt (Bild, Name und Zahl) */
+.content {
+  display: flex; /* Flexbox aktivieren */
+  justify-content: space-between; /* Platz zwischen den Titeln schaffen */
+  align-items: center; /* Vertikale Ausrichtung der Titel */
+  padding: 20px; /* Innenabstand für mehr Platz */
+  height: 80px; /* Feste Höhe für den Header */
+  padding: 10vw;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 2;
+  text-align: right; /* Bild wird nach rechts ausgerichtet */
+}
+
+ 
+
+.name {
+
+  margin-top: 10px; /* Abstand zum oberen Text */
+}
+
+.number {
+  font-size: calc(2/3 * 20vw); /* Die Zahl ist zwei Drittel der Bildgröße */
+  margin-top: 10px; /* Abstand zwischen Name und Zahl */
+}
+
+/* Platzhalter für das Diagramm */
+#diagramm {
+  height: 400px; /* Beispielhöhe, anpassen nach Bedarf */
+  margin: 20px;
+  border: 2px dashed #ccc;
+}
+
+/* Zentrierter Text */
+.centered-text {
+  text-align: center;
+  margin-top: 20px;
+}
+/* Canvas Styling */
+#myChart {
+  width: 100vw; /* 66% der Viewport-Breite (zwei Drittel) */
+  height: auto; /* Höhe proportional zur Breite */
+  display: block; /* Canvas als Block-Element */
+  margin: 0 auto; /* Automatische Zentrierung */
+}
+/* Allgemeine Pfeil-Einstellungen */
+.arrow {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.5s;
+  overflow: hidden;
+  display: inline-block; /* Damit die Pfeile neben dem Text erscheinen */
+  vertical-align: middle; /* Zur mittigen Ausrichtung mit dem Text */
+}
+
+.arrow:hover {
+  border: solid 2px rgba(110, 150, 175, 1);
+  border-radius: 50%;
+}
+
+.arrow:after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 20px;
+  height: 15px;
+  top: -1px;
+  border-bottom: solid 2px rgba(110, 150, 175, 1);
+  transform: translateX(4px);
+}
+
+.arrow:before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px rgba(110, 150, 175, 1);
+  border-left: solid 2px rgba(110, 150, 175, 1);
+  top: 50%;
+  left: 2px;
+  transform-origin: 0% 0%;
+  transform: rotateZ(-45deg);
+}
+
+.arrow:hover:before {
+  animation: aniArrow01 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+.arrow:hover:after {
+  animation: aniArrow02 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+@keyframes aniArrow01 {
+  0% {
+    transform: rotateZ(-45deg) translateY(30px) translateX(30px);
+  }
+  100% {
+    transform: rotateZ(-45deg) translateY(-35px) translateX(-35px);
+  }
+}
+
+@keyframes aniArrow02 {
+  0% {
+    transform: translateX(45px);
+  }
+  100% {
+    transform: translateX(-44px);
+  }
+}
+
+/* Flexbox für die Name- und Pfeil-Anordnung */
+.name-container {
+  display: flex;
+  align-items: center; /* Vertikale Ausrichtung */
+  justify-content: center; /* Horizontale Ausrichtung */
+  gap: 10px; /* Abstand zwischen Pfeil und Text */
+}
+
+/* Entferne die absolute Positionierung der Pfeile */
+.left-arrow {
+  transform: rotate(0deg); /* Normaler Pfeil nach links */
+}
+
+.right-arrow {
+  transform: rotate(180deg); /* Spiegelt den Pfeil horizontal */
+}
