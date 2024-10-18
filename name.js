@@ -18,58 +18,43 @@ fetch('nameapi.php')  // Gib hier den Pfad zur PHP-Datei an
 
             
 
-           // Funktion, die die Daten von der API abruft und in die HTML-Elemente einfügt
-function fetchVisitorData() {
-    const apiUrl = 'https://portal.alfons.io/app/devicecounter/api/sensors?api_key=3ad08d9e67919877e4c9f364974ce07e36cbdc9e';
-    
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            // Speichern der API-Daten in einem Array
-            locationsData = data.data;
-
-            // Den ersten Standort anzeigen
-            if (locationsData.length > 0) {
-                updateDisplay(0); // Zeige den ersten Standort an
-            }
-        })
-        .catch(error => {
-            console.error('Fehler beim Abrufen der API-Daten:', error);
-        });
-}
-
-// Funktion zum Aktualisieren der Anzeige basierend auf dem aktuellen Index
-function updateDisplay(index) {
-    if (locationsData.length === 0) return; // Wenn keine Daten geladen wurden, abbrechen
-
-    const currentLocation = locationsData[index];
-    document.getElementById('dynamic-name').innerText = currentLocation.name;
-    document.getElementById('dynamic-counter').innerText = currentLocation.counter;
-
-    // Dynamisches Bild und Text basierend auf dem Counter-Wert festlegen
-    let imagePath = "img/Wolf_1.svg"; // Standardbild für counter <= 10
-    let centeredText = ""; // Text, der angezeigt wird
-
-    if (currentLocation.counter > 200) {
-        imagePath = "img/Wolf_5.svg";
-        centeredText = "Oh nein! So viele Besucher an " + currentLocation.name + "!";
-    } else if (currentLocation.counter > 130) {
-        imagePath = "img/Wolf_4.svg";
-        centeredText = "Das wird eng an " + currentLocation.name + "!";
-    } else if (currentLocation.counter > 50) {
-        imagePath = "img/Wolf_3.svg";
-        centeredText = "Einige Besucher an " + currentLocation.name + ", aber noch okay!";
-    } else if (currentLocation.counter > 10) {
-        imagePath = "img/Wolf_2.svg";
-        centeredText = "Es ist gemütlich an " + currentLocation.name + "!";
-    } else {
-        centeredText = "Wenig los an " + currentLocation.name + " – ideal für einen Besuch!";
-    }
-
-    document.getElementById('dynamic-image').src = imagePath; // Bild aktualisieren
-   
-}
-
+            function fetchVisitorData() {
+                // URL der API
+                const apiUrl = 'https://portal.alfons.io/app/devicecounter/api/sensors?api_key=3ad08d9e67919877e4c9f364974ce07e36cbdc9e';
+            
+                // Abrufen der Daten von der API
+                fetch(apiUrl)
+                  .then(response => response.json()) // Die Antwort in JSON umwandeln
+                  .then(data => {
+                    // Prüfen, ob Daten vorhanden sind
+                    if (data && data.data && data.data.length > 0) {
+                      // Neuesten Datensatz holen
+                      const firstItem = data.data[0]; // Oder eine andere Logik, um den neuesten Datensatz zu bestimmen
+            
+                      // Dynamische Felder mit den API-Daten füllen
+                      document.getElementById('dynamic-name').innerText = firstItem.name;
+                      document.getElementById('dynamic-counter').innerText = firstItem.counter;
+            
+                      // Dynamisches Bild basierend auf dem Counter-Wert festlegen
+                      let imagePath = "img/Wolf_1.svg"; // Standardbild für counter <= 10
+                      if (firstItem.counter > 200) {
+                          imagePath = "img/Wolf_5.svg";
+                      } else if (firstItem.counter > 130) {
+                          imagePath = "img/Wolf_4.svg";
+                      } else if (firstItem.counter > 50) {
+                          imagePath = "img/Wolf_3.svg";
+                      } else if (firstItem.counter > 10) {
+                          imagePath = "img/Wolf_2.svg";
+                      }
+                      
+                      // Bild aktualisieren
+                      document.getElementById('dynamic-image').src = imagePath;
+                    }
+                  })
+                  .catch(error => {
+                    console.error('Fehler beim Abrufen der API-Daten:', error);
+                  });
+              }
             
               // Beim Laden der Seite die Funktion ausführen
               window.onload = fetchVisitorData;

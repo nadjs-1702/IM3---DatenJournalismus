@@ -121,10 +121,14 @@ header {
 }
 
 /* Zentrierter Text */
-.centered-text {
+.centeredText {
   text-align: center;
   margin-top: 20px;
+  color: rgba(31, 75, 118, 1);
+  margin-bottom: 5vw;
+  background-color:rgba(150, 158, 172, 0.562) ;
 }
+
 /* Canvas Styling */
 #myChart {
   width: 100vw; /* 66% der Viewport-Breite (zwei Drittel) */
